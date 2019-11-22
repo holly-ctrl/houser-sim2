@@ -3,7 +3,7 @@ const express = require('express')
 const massive = require('massive')
 const session = require('express-session')
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
-const Ctrl = require('./controller')
+const ctrl = require('./controller')
 
 const app = express()
 
@@ -14,9 +14,11 @@ app.use(session({
     saveUninitialized: false
 }))
 
+app.get('/api/houses', ctrl.getHouses)
+app.post('/api/houses', ctrl.addHouse)
 
 
 massive(CONNECTION_STRING).then(db => {
-    app.set(db, db)
+    app.set('db', db)
     app.listen(SERVER_PORT, () => console.log(`listening on port ${SERVER_PORT}`))
 })

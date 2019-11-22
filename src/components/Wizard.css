@@ -1,0 +1,16 @@
+header {
+    display: flex;
+    justify-content: space-around;
+}
+
+.cancelBtn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgb(254,194,194);
+    width: 70px;
+    text-decoration: none;
+    height: 40px;
+    font-weight: bold;
+}
+
